@@ -1,6 +1,6 @@
 # Neural Network and Deep Q-Learning Network from Scratch
 
-This project provides an implementation of a Neural Network (NN) and Deep Q-Learning Network (DQN) using only the numpy library and some simple math. The NN includes Stochastic Gradient Descent (SGD) for weight updating, and a DQN is trained to play the game of Cartpole.
+Implementation of a Neural Network (NN) and Deep Q-Learning Network (DQN) using only the numpy library and some simple math. The NN includes Stochastic Gradient Descent (SGD) for weight updating, and a DQN is trained to play the game of Cartpole.
 
 ## Multilayered Perceptron (NN) Using SGD Algorithm
 
@@ -28,8 +28,6 @@ This notebook demonstrates how to use the `NeuralNetwork` to implement the DQN a
 **DQN Using TensorFlow:** [DQN](dqn_tf.py)
 
 **Agent Training:** [Notebook](maze_harvest_train_tf.ipynb)
-
-This notebook provides information on training the agent using the `maze_harvest` environment.
 
 ### Networks Folder
 

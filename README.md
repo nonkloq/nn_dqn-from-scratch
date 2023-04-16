@@ -1,6 +1,6 @@
 # Neural Network and Deep Q-Learning Network from Scratch
 
-Implementation of a Neural Network (NN) and Deep Q-Learning Network (DQN) using only the numpy library and some simple math. The NN includes Stochastic Gradient Descent (SGD) for weight updating, and a DQN is trained to play the game of Cartpole.
+Implementation of a Neural Network (MLP) and Deep Q-Learning Network (DQN) using only the numpy library and some simple math. The NN includes Stochastic Gradient Descent (SGD) for weight updating, and a DQN is trained to play the game of Cartpole.
 
 ## Multilayered Perceptron (NN) Using SGD Algorithm
 

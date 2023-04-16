@@ -163,7 +163,7 @@ if __name__ == "__main__":
     plt.plot(range(len(mse_l)),mse_l)
     plt.xlabel(f"Epoch")
     plt.ylabel("MSE")
-    plt.plot()
+    plt.show()
     y_pred = model_bc.predict(X_test)
     y_pred = [np.round(y_) for y_ in y_pred]
     print(f"Accuracy of the model: {accuracy_score(y_test,y_pred)}")

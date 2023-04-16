@@ -88,7 +88,7 @@ class DQN:
             action_mask = tf.one_hot(action, self.action_size)
             q_vals = tf.reduce_sum(tf.multiply(q_vals, action_mask), axis=1)
 
-            # Q-values for the s'
+            # Q'-values for the s'
             nxt_q_vals = self.Q_target(nxt_state)
             max_nxt_q_vals = tf.reduce_max(nxt_q_vals, axis=1)
             target_q_vals = reward + self.gamma * (1 - done) * max_nxt_q_vals
@@ -120,10 +120,7 @@ if __name__ == "__main__":
         done = False
         rewards = 0
         while not done:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT: done = True
-
-            
+         
             action = np.argmax(net(np.array([state])))
             state, r, done, _,_ = env.step(action)
             rewards += r
@@ -131,6 +128,10 @@ if __name__ == "__main__":
             
             screen.blit(surface, (0, 0))
             pygame.display.flip()
+               
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: done = True
+        
         print(rewards)
         pygame.quit()
 

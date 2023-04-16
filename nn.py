@@ -89,8 +89,9 @@ class NeuralNetwork:
             
     def train(self,X,y,epoch=100,errorcal=10):
         mse_l = []
-        record = False
-        for i in range(epoch):
+        record = True
+        mse = 0
+        for i in range(1,epoch+1):
             if i%errorcal == 0: 
                 record = True
                 mse=0
@@ -108,8 +109,9 @@ class NeuralNetwork:
     def train_on_batch(self,X,y,epoch=100,errorcal=10):
         batch_size = len(X)
         mse_l = []
-        record = False
-        for i in range(epoch):
+        record = True
+        mse = 0
+        for i in range(1,epoch+1):
             if i%errorcal == 0: 
                 record = True
                 mse=0
@@ -152,13 +154,11 @@ if __name__ == "__main__":
     from sklearn.model_selection import train_test_split
     X_train,X_test,y_train,y_test = train_test_split(bc.data,bc.target,test_size=0.3,shuffle=True)
     
-
-    s03 = sigmoid(0.3)
-    model_bc = NeuralNetwork([30,10,4,1],[s03,s03,s03,s03],seed=69420,eta=0.1,momentum=0.9)
+    s01 = sigmoid(0.01) # lower beta to avoid overflows in exp
+    model_bc = NeuralNetwork([30,12,1],[s01,"linear","sigmoid"],seed=8,eta=0.1,momentum=0.3)
     y_pred = model_bc.predict(X_test)
     y_pred = [np.round(y_) for y_ in y_pred]
-    print(f"Accuracy before training: {accuracy_score(y_test,y_pred)}")
-    mse_l = model_bc.train(X_train,y_train)
+    mse_l = model_bc.train(X_train,y_train,epoch=100)
     fig = plt.figure(figsize=(5,5))
     plt.plot(range(len(mse_l)),mse_l)
     plt.xlabel(f"Epoch")
@@ -166,5 +166,5 @@ if __name__ == "__main__":
     plt.plot()
     y_pred = model_bc.predict(X_test)
     y_pred = [np.round(y_) for y_ in y_pred]
-    print(f"Accuracy after training: {accuracy_score(y_test,y_pred)}")
+    print(f"Accuracy of the model: {accuracy_score(y_test,y_pred)}")
 
